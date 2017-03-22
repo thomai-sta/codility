@@ -17,7 +17,7 @@ def solution(A):
         return sum(peaks)
 
     max_distance = peaks[-1] - peaks[0]
-    max_K = int(math.sqrt(max_distance + 1))
+    max_K = int(math.sqrt(max_distance) + 1)
 
     for K in range(max_K, 1, -1):
         curr_peak = peaks[0]
@@ -29,8 +29,11 @@ def solution(A):
             if (num_peaks == K):
                 return K
 
+    return 0
+
 
 if __name__ == '__main__':
     assert solution([1, 5, 3, 4, 3, 4, 1, 2, 3, 4, 6, 2]) == 3
+    assert solution([0, 0, 0, 0, 0, 1, 0, 1, 0, 1]) == 2
     A = [random.randint(0, 1000000000) for i in range(100000)]
     print(solution(A))
